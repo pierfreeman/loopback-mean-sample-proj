@@ -1,4 +1,4 @@
 export class Monster {
-    id: number;
+    _id: number;
     name: string;
 }

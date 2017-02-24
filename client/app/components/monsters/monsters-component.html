@@ -1,0 +1,40 @@
+<h1>{{title}}</h1>
+<h2>My Monsters</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="error" *ngIf="error">{{error}}</div>
+        <div class="pull-right">
+            <button class="btn btn-success" (click)="addMonster()">Add New Monster</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Object Id</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let monster of monsters" [class.active]="monster === selectedMonster" (click)="onSelect(monster)">
+                <td>{{monster._id}}</td>
+                <td>{{monster.name}}</td>
+                <td><button class="btn btn-danger" (click)="deleteHero(monster, $event)">Delete</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div *ngIf="selectedMonster">
+            <h2>
+                {{selectedMonster.name | uppercase}} is my monster
+            </h2>
+            <button class="btn btn-primary" (click)="gotoDetail()">View Details</button>
+        </div>
+    </div>
+</div>

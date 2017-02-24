@@ -12,20 +12,10 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li class="active"> <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
 			<li class="active"><a routerLink="/heroes" routerLinkActive="active">Heroes</a></li>
+			<li class="active"><a routerLink="/monsters" routerLinkActive="active">Monsters</a></li>
 		</ul>
 	</div>
 </nav>
 <div class="container">
 	<router-outlet></router-outlet>
-	<h2>Monsters</h2>
-	<ul class="monsters">
-		<li *ngFor = "let monster of monsters"
-			[class.selected]="monster === selectedMonster"
-			(click)="onSelect(monster)">
-			<span class="badge">{{monster.id}}</span> {{monster.name}}
-		</li>
-	</ul>
-
-	<my-monster-detail [monster]="selectedMonster"></my-monster-detail>
-
 </div>

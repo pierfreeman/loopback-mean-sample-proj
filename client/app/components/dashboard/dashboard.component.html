@@ -6,3 +6,12 @@
         </div>
     </div>
 </div>
+<hr>
+<h3>Top Monsters</h3>
+<div class="row">
+    <div *ngFor="let monster of monsters" (click)="gotoDetail(monster)" class="col-md-3">
+        <div class="module hero">
+            <h4>{{monster.name}}</h4>
+        </div>
+    </div>
+</div>
