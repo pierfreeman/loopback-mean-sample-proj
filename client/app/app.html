@@ -17,4 +17,15 @@
 </nav>
 <div class="container">
 	<router-outlet></router-outlet>
+	<h2>Monsters</h2>
+	<ul class="monsters">
+		<li *ngFor = "let monster of monsters"
+			[class.selected]="monster === selectedMonster"
+			(click)="onSelect(monster)">
+			<span class="badge">{{monster.id}}</span> {{monster.name}}
+		</li>
+	</ul>
+
+	<my-monster-detail [monster]="selectedMonster"></my-monster-detail>
+
 </div>
