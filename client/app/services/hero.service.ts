@@ -7,6 +7,7 @@ import {Injectable} from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {Hero} from "../models/hero";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class HeroService {
@@ -15,11 +16,18 @@ export class HeroService {
 
     constructor(private http: Http) { }
 
-    getHeroes(): Promise<Hero[]> {
+/*    getHeroes(): Promise<Hero[]> {
         return this.http.get(this.heroesUrl)
             .toPromise()
             .then(response => response.json())
             .catch(this.handleError);
+    }*/
+
+    getHeroes(): Observable<Hero[]> {
+        console.log("Ciao!");
+        return this.http
+            .get(this.heroesUrl)
+            .map(response => response.json().data as Hero[]);
     }
 
     getHero(id: string) {

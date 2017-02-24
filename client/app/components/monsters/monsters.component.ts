@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
     templateUrl: './app/components/monsters/monsters-component.html',
 })
 
-export class MonstersComponent implements OnInit{
+export class MonstersComponent implements OnInit {
     monsters: Monster[];
     selectedMonster: Monster;
 

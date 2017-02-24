@@ -20,7 +20,7 @@ export class MonsterDetailComponent implements OnInit {
         private monsterService: MonsterService,
         private route: ActivatedRoute,
         private location: Location
-    ){}
+    ) {}
 
     ngOnInit(): void {
         this.route.params

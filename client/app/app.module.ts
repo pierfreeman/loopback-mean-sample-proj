@@ -14,6 +14,7 @@ import { MonsterDetailComponent } from './components/monsterDetail/monster-detai
 
 import { HeroService }  from './services/hero.service';
 import { MonsterService } from "./services/monster.service";
+import {HeroSearchComponent} from "./components/heroSearch/hero-search.component";
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { MonsterService } from "./services/monster.service";
     MonstersComponent,
     DashboardComponent,
     HeroDetailComponent,
-    MonsterDetailComponent
+    MonsterDetailComponent,
+    HeroSearchComponent
   ],
   providers: [
     HeroService,
