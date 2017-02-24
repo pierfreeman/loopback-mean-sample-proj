@@ -1,3 +1,4 @@
+///<reference path="../typings/globals/core-js/index.d.ts"/>
 import {Component} from '@angular/core';
 import {Monster} from "./models/monster";
 import {MonsterService} from './services/monster.service';
@@ -70,7 +71,7 @@ export class AppComponent implements OnInit {
     }
 
     getMonsters(): void {
-        this.monsters = this.monsterService.getMonsters();
+        this.monsterService.getMonsters().then(monsters => this.monsters = monsters);
     }
 
     onSelect(monster: Monster): void {

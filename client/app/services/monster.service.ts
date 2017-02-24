@@ -4,7 +4,7 @@ import {MONSTERS} from "../mock-monster";
 
 @Injectable()
 export class MonsterService {
-    getMonsters(): Monster[] {
-        return MONSTERS;
+    getMonsters(): Promise<Monster[]>{
+        return Promise.resolve(MONSTERS);
     }
 }
