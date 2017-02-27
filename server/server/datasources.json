@@ -2,5 +2,14 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "mongoDs": {
+    "host": "localhost",
+    "port": 27017,
+    "database": "training-loopback",
+    "username": "",
+    "password": "",
+    "name": "mongoDs",
+    "connector": "mongodb"
   }
 }

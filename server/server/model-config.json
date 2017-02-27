@@ -39,7 +39,15 @@
     "dataSource": "db"
   },
   "monster": {
-    "dataSource": "db",
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "review": {
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "reviewer": {
+    "dataSource": "mongoDs",
     "public": true
   }
 }

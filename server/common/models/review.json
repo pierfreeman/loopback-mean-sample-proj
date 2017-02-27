@@ -1,5 +1,5 @@
 {
-  "name": "monster",
+  "name": "review",
   "base": "PersistedModel",
   "idInjection": false,
   "options": {
@@ -7,12 +7,14 @@
   },
   "forceId": false,
   "properties": {
-    "name": {
-      "type": "string",
-      "required": true
+    "date": {
+      "type": "date"
     },
-    "power": {
-      "type": "number",
+    "rating": {
+      "type": "number"
+    },
+    "comments": {
+      "type": "string",
       "required": true
     }
   },
