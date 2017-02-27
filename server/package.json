@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "eslint .",
     "start": "node .",
-    "posttest": "npm run lint && nsp check"
+    "posttest": "npm run lint && nsp check",
+    "build:sdk": "./node_modules/.bin/lb-sdk server/server server/client/ -d ng2web -i disabled"
   },
   "dependencies": {
     "async": "^2.1.5",
