@@ -1,10 +1,10 @@
 /* tslint:disable */
 import { Injectable, Inject, NgZone } from '@angular/core';
 import { SocketDriver } from './socket.driver';
-import { AccessToken } from '../models';
+import { AccessToken } from './.';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-import { LoopBackConfig } from '../lb.config';
+import { LoopBackConfig } from '../shared/sdk/lb.config';
 /**
 * @author Jonathan Casarrubias <twitter:@johncasarrubias> <github:@mean-expert-official>
 * @module SocketConnection
@@ -82,7 +82,7 @@ export class SocketConnection {
       // Listen for connection
       this.on('connect', () => {
         this.subjects.onConnect.next('connected');
-        // Authenticate or start heartbeat now    
+        // Authenticate or start heartbeat now
         this.emit('authentication', token);
       });
       // Listen for authentication

@@ -5,7 +5,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { JSONSearchParams } from './search.params';
 import { ErrorHandler } from './error.service';
 import { LoopBackAuth } from './auth.service';
-import { LoopBackConfig } from '../../lb.config';
+import { LoopBackConfig } from '../../shared/sdk/lb.config';
 import { LoopBackFilter, AccessToken } from '../../models/BaseModels';
 import { SDKModels } from '../custom/SDKModels';
 import { Observable } from 'rxjs/Observable';
@@ -391,7 +391,7 @@ export abstract class BaseLoopBackApi {
       source.addEventListener('data', emit);
       source.onerror = emit;
     } else {
-      console.warn('SDK Builder: EventSource is not supported'); 
+      console.warn('SDK Builder: EventSource is not supported');
     }
     return subject.asObservable();
   }

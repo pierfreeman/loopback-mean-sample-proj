@@ -1,7 +1,7 @@
 /* tslint:disable */
 import {
   Review
-} from '../index';
+} from '../shared/sdk/index';
 
 declare var Object: any;
 export interface ReviewerInterface {
@@ -46,7 +46,7 @@ export class Reviewer implements ReviewerInterface {
   **/
   public static factory(data: ReviewerInterface): Reviewer{
     return new Reviewer(data);
-  }  
+  }
   /**
   * @method getModelDefinition
   * @author Julien Ledun

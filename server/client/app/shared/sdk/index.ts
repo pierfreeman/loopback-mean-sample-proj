@@ -15,7 +15,7 @@
 * ============================================================================
 * import { NgModule }       from '@angular/core';
 * import { BrowserModule }  from '@angular/platform-browser';
-* // App Root 
+* // App Root
 * import { AppComponent }   from './app.component';
 * // Feature Modules
 * import { SDK[Browser|Node|Native]Module } from './shared/sdk/sdk.module';
@@ -33,26 +33,26 @@
 * export class AppModule { }
 *
 **/
-import { JSONSearchParams } from './services/core/search.params';
-import { ErrorHandler } from './services/core/error.service';
-import { LoopBackAuth } from './services/core/auth.service';
-import { LoggerService } from './services/custom/logger.service';
-import { SDKModels } from './services/custom/SDKModels';
-import { InternalStorage, SDKStorage } from './storage/storage.swaps';
+import { JSONSearchParams } from '../../services/core/search.params';
+import { ErrorHandler } from '../../services/core/error.service';
+import { LoopBackAuth } from '../../services/core/auth.service';
+import { LoggerService } from '../../services/custom/logger.service';
+import { SDKModels } from '../../services/custom/SDKModels';
+import { InternalStorage, SDKStorage } from '../../storage/storage.swaps';
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { CookieBrowser } from './storage/cookie.browser';
-import { StorageBrowser } from './storage/storage.browser';
-import { SocketBrowser } from './sockets/socket.browser';
-import { SocketDriver } from './sockets/socket.driver';
-import { SocketConnection } from './sockets/socket.connections';
-import { RealTime } from './services/core/real.time';
-import { UserApi } from './services/custom/User';
-import { NoteApi } from './services/custom/Note';
-import { MonsterApi } from './services/custom/Monster';
-import { ReviewApi } from './services/custom/Review';
-import { ReviewerApi } from './services/custom/Reviewer';
+import { CookieBrowser } from '../../storage/cookie.browser';
+import { StorageBrowser } from '../../storage/storage.browser';
+import { SocketBrowser } from '../../sockets/socket.browser';
+import { SocketDriver } from '../../sockets/socket.driver';
+import { SocketConnection } from '../../sockets/socket.connections';
+import { RealTime } from '../../services/core/real.time';
+import { UserApi } from '../../services/custom/User';
+import { NoteApi } from '../../services/custom/Note';
+import { MonsterApi } from '../../services/custom/Monster';
+import { ReviewApi } from '../../services/custom/Review';
+import { ReviewerApi } from '../../services/custom/Reviewer';
 /**
 * @module SDKBrowserModule
 * @description
@@ -100,9 +100,9 @@ export class SDKBrowserModule {
 * Have Fun!!!
 * - Jon
 **/
-export * from './models/index';
-export * from './services/index';
+export * from '../../models/index';
+export * from '../../services/index';
 export * from './lb.config';
-export * from './storage/storage.swaps';
-export { CookieBrowser } from './storage/cookie.browser';
-export { StorageBrowser } from './storage/storage.browser';
+export * from '../../storage/storage.swaps';
+export { CookieBrowser } from '../../storage/cookie.browser';
+export { StorageBrowser } from '../../storage/storage.browser';

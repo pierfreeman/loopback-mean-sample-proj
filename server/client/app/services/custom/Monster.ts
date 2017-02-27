@@ -3,23 +3,24 @@ import { Injectable, Inject, Optional } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { SDKModels } from './SDKModels';
 import { BaseLoopBackApi } from '../core/base.service';
-import { LoopBackConfig } from '../../lb.config';
+import { LoopBackConfig } from '../../shared/sdk/lb.config';
 import { LoopBackAuth } from '../core/auth.service';
-import { LoopBackFilter, SDKToken, AccessToken } from '../../models/BaseModels';
+import { LoopBackFilter,  } from '../../models/BaseModels';
 import { JSONSearchParams } from '../core/search.params';
 import { ErrorHandler } from '../core/error.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx';
-import { Reviewer } from '../../models/Reviewer';
+import { Monster } from '../../models/Monster';
 import { SocketConnection } from '../../sockets/socket.connections';
 import { Review } from '../../models/Review';
+import { Reviewer } from '../../models/Reviewer';
 
 
 /**
- * Api services for the `Reviewer` model.
+ * Api services for the `Monster` model.
  */
 @Injectable()
-export class ReviewerApi extends BaseLoopBackApi {
+export class MonsterApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(Http) protected http: Http,
@@ -33,102 +34,9 @@ export class ReviewerApi extends BaseLoopBackApi {
   }
 
   /**
-   * Find a related item by id for accessTokens.
-   *
-   * @param {any} id reviewer id
-   *
-   * @param {any} fk Foreign key for accessTokens
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `Reviewer` object.)
-   * </em>
-   */
-  public findByIdAccessTokens(id: any, fk: any): Observable<any> {
-    let _method: string = "GET";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/:id/accessTokens/:fk";
-    let _routeParams: any = {
-      id: id,
-      fk: fk
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
-    return result;
-  }
-
-  /**
-   * Delete a related item by id for accessTokens.
-   *
-   * @param {any} id reviewer id
-   *
-   * @param {any} fk Foreign key for accessTokens
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * This method returns no data.
-   */
-  public destroyByIdAccessTokens(id: any, fk: any): Observable<any> {
-    let _method: string = "DELETE";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/:id/accessTokens/:fk";
-    let _routeParams: any = {
-      id: id,
-      fk: fk
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
-    return result;
-  }
-
-  /**
-   * Update a related item by id for accessTokens.
-   *
-   * @param {any} id reviewer id
-   *
-   * @param {any} fk Foreign key for accessTokens
-   *
-   * @param {object} data Request data.
-   *
-   * This method expects a subset of model properties as request parameters.
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `Reviewer` object.)
-   * </em>
-   */
-  public updateByIdAccessTokens(id: any, fk: any, data: any = {}): Observable<any> {
-    let _method: string = "PUT";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/:id/accessTokens/:fk";
-    let _routeParams: any = {
-      id: id,
-      fk: fk
-    };
-    let _postBody: any = {
-      data: data
-    };
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
-    return result;
-  }
-
-  /**
    * Find a related item by id for reviews.
    *
-   * @param {any} id reviewer id
+   * @param {any} id monster id
    *
    * @param {any} fk Foreign key for reviews
    *
@@ -138,13 +46,13 @@ export class ReviewerApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Reviewer` object.)
+   * This usually means the response is a `Monster` object.)
    * </em>
    */
   public findByIdReviews(id: any, fk: any): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/:id/reviews/:fk";
+    "/monsters/:id/reviews/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -158,7 +66,7 @@ export class ReviewerApi extends BaseLoopBackApi {
   /**
    * Delete a related item by id for reviews.
    *
-   * @param {any} id reviewer id
+   * @param {any} id monster id
    *
    * @param {any} fk Foreign key for reviews
    *
@@ -171,7 +79,7 @@ export class ReviewerApi extends BaseLoopBackApi {
   public destroyByIdReviews(id: any, fk: any): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/:id/reviews/:fk";
+    "/monsters/:id/reviews/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -185,7 +93,7 @@ export class ReviewerApi extends BaseLoopBackApi {
   /**
    * Update a related item by id for reviews.
    *
-   * @param {any} id reviewer id
+   * @param {any} id monster id
    *
    * @param {any} fk Foreign key for reviews
    *
@@ -199,13 +107,13 @@ export class ReviewerApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Reviewer` object.)
+   * This usually means the response is a `Monster` object.)
    * </em>
    */
   public updateByIdReviews(id: any, fk: any, data: any = {}): Observable<any> {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/:id/reviews/:fk";
+    "/monsters/:id/reviews/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -219,39 +127,68 @@ export class ReviewerApi extends BaseLoopBackApi {
   }
 
   /**
-   * Queries accessTokens of reviewer.
+   * Find a related item by id for reviewers.
    *
-   * @param {any} id reviewer id
+   * @param {any} id monster id
    *
-   * @param {object} filter 
+   * @param {any} fk Foreign key for reviewers
    *
-   * @returns {object[]} An empty reference that will be
+   * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Reviewer` object.)
+   * This usually means the response is a `Monster` object.)
    * </em>
    */
-  public getAccessTokens(id: any, filter: LoopBackFilter = {}): Observable<any> {
+  public findByIdReviewers(id: any, fk: any): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/:id/accessTokens";
+    "/monsters/:id/reviewers/:fk";
     let _routeParams: any = {
-      id: id
+      id: id,
+      fk: fk
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (filter) _urlParams.filter = filter;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
     return result;
   }
 
   /**
-   * Creates a new instance in accessTokens of this model.
+   * Delete a related item by id for reviewers.
    *
-   * @param {any} id reviewer id
+   * @param {any} id monster id
+   *
+   * @param {any} fk Foreign key for reviewers
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * This method returns no data.
+   */
+  public destroyByIdReviewers(id: any, fk: any): Observable<any> {
+    let _method: string = "DELETE";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/monsters/:id/reviewers/:fk";
+    let _routeParams: any = {
+      id: id,
+      fk: fk
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    return result;
+  }
+
+  /**
+   * Update a related item by id for reviewers.
+   *
+   * @param {any} id monster id
+   *
+   * @param {any} fk Foreign key for reviewers
    *
    * @param {object} data Request data.
    *
@@ -263,15 +200,16 @@ export class ReviewerApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Reviewer` object.)
+   * This usually means the response is a `Monster` object.)
    * </em>
    */
-  public createAccessTokens(id: any, data: any = {}): Observable<any> {
-    let _method: string = "POST";
+  public updateByIdReviewers(id: any, fk: any, data: any = {}): Observable<any> {
+    let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/:id/accessTokens";
+    "/monsters/:id/reviewers/:fk";
     let _routeParams: any = {
-      id: id
+      id: id,
+      fk: fk
     };
     let _postBody: any = {
       data: data
@@ -282,64 +220,11 @@ export class ReviewerApi extends BaseLoopBackApi {
   }
 
   /**
-   * Deletes all accessTokens of this model.
+   * Queries reviews of monster.
    *
-   * @param {any} id reviewer id
+   * @param {any} id monster id
    *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * This method returns no data.
-   */
-  public deleteAccessTokens(id: any): Observable<any> {
-    let _method: string = "DELETE";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/:id/accessTokens";
-    let _routeParams: any = {
-      id: id
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
-    return result;
-  }
-
-  /**
-   * Counts accessTokens of reviewer.
-   *
-   * @param {any} id reviewer id
-   *
-   * @param {object} where Criteria to match model instances
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * Data properties:
-   *
-   *  - `count` – `{number}` - 
-   */
-  public countAccessTokens(id: any, where: any = {}): Observable<any> {
-    let _method: string = "GET";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/:id/accessTokens/count";
-    let _routeParams: any = {
-      id: id
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    if (where) _urlParams.where = where;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
-    return result;
-  }
-
-  /**
-   * Queries reviews of reviewer.
-   *
-   * @param {any} id reviewer id
-   *
-   * @param {object} filter 
+   * @param {object} filter
    *
    * @returns {object[]} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -347,13 +232,13 @@ export class ReviewerApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Reviewer` object.)
+   * This usually means the response is a `Monster` object.)
    * </em>
    */
   public getReviews(id: any, filter: LoopBackFilter = {}): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/:id/reviews";
+    "/monsters/:id/reviews";
     let _routeParams: any = {
       id: id
     };
@@ -367,7 +252,7 @@ export class ReviewerApi extends BaseLoopBackApi {
   /**
    * Creates a new instance in reviews of this model.
    *
-   * @param {any} id reviewer id
+   * @param {any} id monster id
    *
    * @param {object} data Request data.
    *
@@ -379,13 +264,13 @@ export class ReviewerApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Reviewer` object.)
+   * This usually means the response is a `Monster` object.)
    * </em>
    */
   public createReviews(id: any, data: any = {}): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/:id/reviews";
+    "/monsters/:id/reviews";
     let _routeParams: any = {
       id: id
     };
@@ -400,7 +285,7 @@ export class ReviewerApi extends BaseLoopBackApi {
   /**
    * Deletes all reviews of this model.
    *
-   * @param {any} id reviewer id
+   * @param {any} id monster id
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -411,7 +296,7 @@ export class ReviewerApi extends BaseLoopBackApi {
   public deleteReviews(id: any): Observable<any> {
     let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/:id/reviews";
+    "/monsters/:id/reviews";
     let _routeParams: any = {
       id: id
     };
@@ -422,9 +307,9 @@ export class ReviewerApi extends BaseLoopBackApi {
   }
 
   /**
-   * Counts reviews of reviewer.
+   * Counts reviews of monster.
    *
-   * @param {any} id reviewer id
+   * @param {any} id monster id
    *
    * @param {object} where Criteria to match model instances
    *
@@ -434,12 +319,128 @@ export class ReviewerApi extends BaseLoopBackApi {
    *
    * Data properties:
    *
-   *  - `count` – `{number}` - 
+   *  - `count` – `{number}` -
    */
   public countReviews(id: any, where: any = {}): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/:id/reviews/count";
+    "/monsters/:id/reviews/count";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (where) _urlParams.where = where;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    return result;
+  }
+
+  /**
+   * Queries reviewers of monster.
+   *
+   * @param {any} id monster id
+   *
+   * @param {object} filter
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `Monster` object.)
+   * </em>
+   */
+  public getReviewers(id: any, filter: LoopBackFilter = {}): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/monsters/:id/reviewers";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (filter) _urlParams.filter = filter;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    return result;
+  }
+
+  /**
+   * Creates a new instance in reviewers of this model.
+   *
+   * @param {any} id monster id
+   *
+   * @param {object} data Request data.
+   *
+   * This method expects a subset of model properties as request parameters.
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `Monster` object.)
+   * </em>
+   */
+  public createReviewers(id: any, data: any = {}): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/monsters/:id/reviewers";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {
+      data: data
+    };
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    return result;
+  }
+
+  /**
+   * Deletes all reviewers of this model.
+   *
+   * @param {any} id monster id
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * This method returns no data.
+   */
+  public deleteReviewers(id: any): Observable<any> {
+    let _method: string = "DELETE";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/monsters/:id/reviewers";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    return result;
+  }
+
+  /**
+   * Counts reviewers of monster.
+   *
+   * @param {any} id monster id
+   *
+   * @param {object} where Criteria to match model instances
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * Data properties:
+   *
+   *  - `count` – `{number}` -
+   */
+  public countReviewers(id: any, where: any = {}): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/monsters/:id/reviewers/count";
     let _routeParams: any = {
       id: id
     };
@@ -457,7 +458,7 @@ export class ReviewerApi extends BaseLoopBackApi {
    *
    *  - `data` – `{object}` - Model instance data
    *
-   *  - `options` – `{object}` - 
+   *  - `options` – `{object}` -
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -465,13 +466,13 @@ export class ReviewerApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Reviewer` object.)
+   * This usually means the response is a `Monster` object.)
    * </em>
    */
   public patchOrCreate(data: any = {}, options: any = {}): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers";
+    "/monsters";
     let _routeParams: any = {};
     let _postBody: any = {
       data: data
@@ -484,7 +485,7 @@ export class ReviewerApi extends BaseLoopBackApi {
   /**
    * Patch attributes for a model instance and persist it into the data source.
    *
-   * @param {any} id reviewer id
+   * @param {any} id monster id
    *
    * @param {object} data Request data.
    *
@@ -496,13 +497,13 @@ export class ReviewerApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Reviewer` object.)
+   * This usually means the response is a `Monster` object.)
    * </em>
    */
   public patchAttributes(id: any, data: any = {}): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/:id";
+    "/monsters/:id";
     let _routeParams: any = {
       id: id
     };
@@ -515,162 +516,28 @@ export class ReviewerApi extends BaseLoopBackApi {
   }
 
   /**
-   * Login a user with username/email and password.
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
    *
-   * @param {string} include Related objects to include in the response. See the description of return value for more details.
-   *   Default value: `user`.
-   *
-   *  - `rememberMe` - `boolean` - Whether the authentication credentials
-   *     should be remembered in localStorage across app/browser restarts.
-   *     Default: `true`.
-   *
-   * @param {object} data Request data.
-   *
-   * This method expects a subset of model properties as request parameters.
+   * @param {number} id
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
    *
-   * The response body contains properties of the AccessToken created on login.
-   * Depending on the value of `include` parameter, the body may contain additional properties:
-   * 
-   *   - `user` - `U+007BUserU+007D` - Data of the currently logged in user. (`include=user`)
-   * 
+   * Data properties:
    *
+   *  - `name` – `{string}` -
    */
-  public login(credentials: any, include: any = 'user', rememberMe: boolean = true): Observable<any> {
-    let _method: string = "POST";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/login";
-    let _routeParams: any = {};
-    let _postBody: any = {
-      credentials: credentials
-    };
-    let _urlParams: any = {};
-    if (include) _urlParams.include = include;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody)
-      .map(
-        (response: any) => {
-          response.ttl = parseInt(response.ttl);
-          response.rememberMe = rememberMe;
-          this.auth.setToken(response);
-          return response;
-        }
-      );
-      return result;
-      
-  }
-
-  /**
-   * Logout a user with access token.
-   *
-   * @param {object} data Request data.
-   *
-   *  - `access_token` – `{string}` - Do not supply this argument, it is automatically extracted from request headers.
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * This method returns no data.
-   */
-  public logout(): Observable<any> {
-    let _method: string = "POST";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/logout";
-    let _routeParams: any = {};
-    let _postBody: any = {};
-    let _urlParams: any = {};
-       _urlParams.access_token = this.auth.getAccessTokenId();
-    this.auth.clear(); 
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
-    return result;
-  }
-
-  /**
-   * Confirm a user registration with email verification token.
-   *
-   * @param {string} uid 
-   *
-   * @param {string} token 
-   *
-   * @param {string} redirect 
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * This method returns no data.
-   */
-  public confirm(uid: any, token: any, redirect: any = {}): Observable<any> {
+  public getName(id: any = {}): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/confirm";
-    let _routeParams: any = {};
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    if (uid) _urlParams.uid = uid;
-    if (token) _urlParams.token = token;
-    if (redirect) _urlParams.redirect = redirect;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
-    return result;
-  }
-
-  /**
-   * Reset password for a user with email.
-   *
-   * @param {object} data Request data.
-   *
-   * This method expects a subset of model properties as request parameters.
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * This method returns no data.
-   */
-  public resetPassword(options: any): Observable<any> {
-    let _method: string = "POST";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/reset";
-    let _routeParams: any = {};
-    let _postBody: any = {
-      options: options
-    };
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
-    return result;
-  }
-
-  /**
-   * Creates a new instance in accessTokens of this model.
-   *
-   * @param {any} id reviewer id
-   *
-   * @param {object} data Request data.
-   *
-   * This method expects a subset of model properties as request parameters.
-   *
-   * @returns {object[]} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `Reviewer` object.)
-   * </em>
-   */
-  public createManyAccessTokens(id: any, data: any[] = []): Observable<any> {
-    let _method: string = "POST";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/:id/accessTokens";
+    "/monsters/getname";
     let _routeParams: any = {
       id: id
     };
-    let _postBody: any = {
-      data: data
-    };
+    let _postBody: any = {};
     let _urlParams: any = {};
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
     return result;
@@ -679,7 +546,7 @@ export class ReviewerApi extends BaseLoopBackApi {
   /**
    * Creates a new instance in reviews of this model.
    *
-   * @param {any} id reviewer id
+   * @param {any} id monster id
    *
    * @param {object} data Request data.
    *
@@ -691,13 +558,13 @@ export class ReviewerApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Reviewer` object.)
+   * This usually means the response is a `Monster` object.)
    * </em>
    */
   public createManyReviews(id: any, data: any[] = []): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/reviewers/:id/reviews";
+    "/monsters/:id/reviews";
     let _routeParams: any = {
       id: id
     };
@@ -708,75 +575,45 @@ export class ReviewerApi extends BaseLoopBackApi {
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
     return result;
   }
-  /**
-   * @ngdoc method
-   * @name sdk.Reviewer#getCurrent
-   * @methodOf sdk.Reviewer
-   *
-   * @description
-   *
-   * Get data of the currently logged user. Fail with HTTP result 401
-   * when there is no user logged in.
-   *
-   * @returns object An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   */
-  public getCurrent(): any {
-    let _method: string = "GET";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() + "/reviewers" + "/:id";
-    let id: any = this.auth.getCurrentUserId();
-    if (id == null)
-    id = '__anonymous__';
-    let _routeParams: any = { id: id };
-    let _urlParams: any = {};
-    let _postBody: any = {};
-    return this.request(_method, _url, _routeParams, _urlParams, _postBody);
-  }
-  /**
-   * Get data of the currently logged user that was returned by the last
-   * call to {@link sdk.Reviewer#login} or
-   * {@link sdk.Reviewer#getCurrent}. Return null when there
-   * is no user logged in or the data of the current user were not fetched
-   * yet.
-   *
-   * @returns object An Account instance.
-   */
-  public getCachedCurrent() {
-    return this.auth.getCurrentUserData();
-  }
-  /**
-   * Get data of the currently logged access tokern that was returned by the last
-   * call to {@link sdk.Reviewer#login}
-   *
-   * @returns object An AccessToken instance.
-   */
-  public getCurrentToken(): AccessToken {
-    return this.auth.getToken();
-  }
-  /**
-   * @name sdk.Reviewer#isAuthenticated
-   *
-   * @returns {boolean} True if the current user is authenticated (logged in).
-   */
-  public isAuthenticated() {
-    return !(this.getCurrentId() === '' || this.getCurrentId() == null || this.getCurrentId() == 'null');
-  }
 
   /**
-   * @name sdk.Reviewer#getCurrentId
+   * Creates a new instance in reviewers of this model.
    *
-   * @returns object Id of the currently logged-in user or null.
+   * @param {any} id monster id
+   *
+   * @param {object} data Request data.
+   *
+   * This method expects a subset of model properties as request parameters.
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `Monster` object.)
+   * </em>
    */
-  public getCurrentId() {
-    return this.auth.getCurrentUserId();
+  public createManyReviewers(id: any, data: any[] = []): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/monsters/:id/reviewers";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {
+      data: data
+    };
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    return result;
   }
 
   /**
    * The name of the model represented by this $resource,
-   * i.e. `Reviewer`.
+   * i.e. `Monster`.
    */
   public getModelName() {
-    return "Reviewer";
+    return "Monster";
   }
 }

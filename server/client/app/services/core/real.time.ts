@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { IO } from './io.service';
 import { LoopBackAuth } from './auth.service';
-import { LoopBackConfig } from '../../lb.config';
+import { LoopBackConfig } from '../../shared/sdk/lb.config';
 import { FireLoop } from '../../models/FireLoop';
 import { SocketConnection } from '../../sockets/socket.connections';
 import { SDKModels } from '../custom/SDKModels';
@@ -41,7 +41,7 @@ export class RealTime {
   }
   /**
   * @method onDisconnect
-  * @return {Observable<any>} 
+  * @return {Observable<any>}
   * @description
   * Will trigger when Real-Time Service is disconnected from server.
   **/
@@ -50,7 +50,7 @@ export class RealTime {
   }
   /**
   * @method onAuthenticated
-  * @return {Observable<any>} 
+  * @return {Observable<any>}
   * @description
   * Will trigger when Real-Time Service is authenticated with the server.
   **/
@@ -59,7 +59,7 @@ export class RealTime {
   }
   /**
   * @method onUnAuthorized
-  * @return {Observable<any>} 
+  * @return {Observable<any>}
   * @description
   * Will trigger when Real-Time Service is not authorized to connect with the server.
   **/
@@ -68,7 +68,7 @@ export class RealTime {
   }
   /**
   * @method onReady
-  * @return {Observable<any>} 
+  * @return {Observable<any>}
   * @description
   * Will trigger when Real-Time Service is Ready for broadcasting.
   * and will register connection flow events to notify subscribers.
@@ -99,7 +99,7 @@ export class RealTime {
       this.connection.connect(this.auth.getToken());
       this.IO       = new IO(this.connection);
       this.FireLoop = new FireLoop(this.connection, this.models);
-      // Fire event for those subscribed 
+      // Fire event for those subscribed
       let s1: Subscription = this.connection.sharedObservables.sharedOnConnect.subscribe(() => {
         console.log('Real-Time connection has been established');
         this.connecting = false;

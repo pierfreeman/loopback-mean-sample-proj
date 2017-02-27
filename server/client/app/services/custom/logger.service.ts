@@ -1,6 +1,6 @@
 /* tslint:disable */
 import { Injectable } from '@angular/core';
-import { LoopBackConfig } from '../../lb.config';
+import { LoopBackConfig } from '../../shared/sdk/lb.config';
 /**
 * @author Jonathan Casarrubias <twitter:@johncasarrubias> <github:@johncasarrubias>
 * @module LoggerService

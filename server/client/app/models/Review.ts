@@ -2,7 +2,7 @@
 import {
   Monster,
   Reviewer
-} from '../index';
+} from '../shared/sdk/index';
 
 declare var Object: any;
 export interface ReviewInterface {
@@ -43,7 +43,7 @@ export class Review implements ReviewInterface {
   **/
   public static factory(data: ReviewInterface): Review{
     return new Review(data);
-  }  
+  }
   /**
   * @method getModelDefinition
   * @author Julien Ledun
